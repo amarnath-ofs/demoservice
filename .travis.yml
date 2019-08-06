@@ -2,8 +2,8 @@ language: java
 sudo: required
 services:
   - docker
-before_install:
-  - docker build -t amarofs/demoservice -f Dockerfile .
+script:
+  - mvn test -B
 after_success:
   - docker build -t amarofs/demoservice -f Dockerfile .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin

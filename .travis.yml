@@ -1,10 +1,18 @@
 language: java
 sudo: required
+env:
+  global:
+    - IMAGE_NAME=amarofs/demoservice
+
 services:
   - docker
 script:
-  - mvn test -B
-after_success:
-  - docker build -t amarofs/demoservice -f Dockerfile .
+  - docker build -t "$IMAGE_NAME" -f Dockerfile .
+
+before_deploy:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push marofs/demoservice
+deploy:
+  provider: script
+  script: docker push "${IMAGE_NAME}:latest
+  on:
+    branch: master

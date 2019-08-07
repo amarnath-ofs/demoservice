@@ -19,6 +19,7 @@ public class EmployeeController {
         employeesList.add(new Employee(3,"peter","park","peterpark@gmail.com"));
         employeesList.add(new Employee(4,"tony","stark","tonystark@gmail.com"));
         employeesList.add(new Employee(5,"jack","sparrow","jacksparrow@gmail.com"));
+        employeesList.add(new Employee(6,"amy","jackson","amyjackson@gmail.com"));
         return employeesList;
     }
 }
